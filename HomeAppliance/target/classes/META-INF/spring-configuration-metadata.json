@@ -1,0 +1,44 @@
+{
+  "groups": [
+    {
+      "name": "app.websocket",
+      "type": "com.example.HomeAppliance.config.WebSocketProperties",
+      "sourceType": "com.example.HomeAppliance.config.WebSocketProperties"
+    },
+    {
+      "name": "p",
+      "type": "com.example.HomeAppliance.config.WebSocketConfiguration",
+      "sourceType": "com.example.HomeAppliance.config.WebSocketConfiguration"
+    }
+  ],
+  "properties": [
+    {
+      "name": "app.websocket.allowed-origins",
+      "type": "java.lang.String[]",
+      "description": "Allowed origins",
+      "sourceType": "com.example.HomeAppliance.config.WebSocketProperties",
+      "defaultValue": []
+    },
+    {
+      "name": "app.websocket.application-prefix",
+      "type": "java.lang.String",
+      "sourceType": "com.example.HomeAppliance.config.WebSocketProperties",
+      "defaultValue": "\/topic"
+    },
+    {
+      "name": "app.websocket.endpoint",
+      "type": "java.lang.String",
+      "description": "Endpoint that can be used to connect to",
+      "sourceType": "com.example.HomeAppliance.config.WebSocketProperties",
+      "defaultValue": "\/live"
+    },
+    {
+      "name": "app.websocket.topic-prefix",
+      "type": "java.lang.String",
+      "description": "Prefix used by topics",
+      "sourceType": "com.example.HomeAppliance.config.WebSocketProperties",
+      "defaultValue": "\/topic"
+    }
+  ],
+  "hints": []
+}

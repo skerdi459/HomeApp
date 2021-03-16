@@ -1,0 +1,61 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+          <mat-cell *matCellDef="let element let i=index"> {{i+1}} </mat-cell>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="location">
+          <mat-header-cell *matHeaderCellDef> location </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.location.name}} </mat-cell>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="type">
+          <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.type.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Nr Attributes">
+          <mat-header-cell *matHeaderCellDef> Nr Attributes </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.attributes.length}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                 
+                   <div *ngIf="element.state===1; else off">
+                    <button  mat-stroked-button color="warn" (click)="edit(element,editTemplate)">ON</button>
+                   </div>
+                  
+                  
+                  <ng-template #off>
+                    <button  mat-raised-button color="warn" (click)="edit(element,editTemplate)">OFF</button>
+                  </ng-template>
+                   
+                  
+                 
+                   </mat-cell>
+              </ng-container>
+        
+      
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+
+      <ng-template #editTemplate>
+        <mat-dialog-content style="font-size: 16px">Are you sure you want to change status ?</mat-dialog-content>
+        <mat-dialog-actions style="justify-content: center">
+            <button color="warn" mat-button mat-dialog-close  (click)="editTm(tobeEdit.id)" >Yes</button>
+            <button mat-button mat-dialog-close>No</button>
+        </mat-dialog-actions>
+    </ng-template>

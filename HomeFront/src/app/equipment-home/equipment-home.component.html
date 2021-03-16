@@ -1,0 +1,69 @@
+<div class="list" style="display:inline-block" *ngFor="let one of appliances let i=index">
+  
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Location: {{one.location.name}} </mat-card-title>
+        <mat-card-subtitle>Type:{{one.type.name}}</mat-card-subtitle>
+        </mat-card-header>
+       
+        <mat-card-content>
+          <p>
+            APPLIANCE:{{one.name}}
+          </p>
+        </mat-card-content>
+        <div *ngIf="one.state==1">
+            <table>
+                <tr *ngFor="let oneattr of one.attributes">
+                    <td > <button mat-icon-button (click)="decreaseTemp(oneattr.attributeId,decreaseValue)">
+                        <mat-icon>remove</mat-icon>
+                      </button></td>
+                <td style="color: rgb(255, 23, 23)"> {{oneattr.name}}</td>
+                <td style="color: brown"> state:{{oneattr.current}}</td>
+                        <td style="float: left"> <button mat-icon-button (click)="increaseTemp(oneattr.attributeId,increaseValue)">
+                            <mat-icon>add</mat-icon>
+                          </button></td>
+                </tr>
+                
+                
+                
+            </table>
+            <mat-card-actions>
+             
+                <button mat-raised-button color="primary" >ON</button>
+            </mat-card-actions>
+            
+            <ol  *ngFor="let oneatt of one.attributes">
+              
+            {{findproblems(oneatt.current,oneatt.min,oneatt.max)==true ? "Appliance"+oneatt.name+"eshte afer":null}}
+            
+    
+            </ol>
+        </div>
+        <div  *ngIf="one.state==0">
+            <button mat-raised-button color="primary" >OFF</button>
+
+        </div>
+        
+      </mat-card>
+      
+   
+     
+</div>
+
+<ng-template #increaseValue>
+    <mat-dialog-content style="font-size: 16px">Are you sure?</mat-dialog-content>
+    <mat-dialog-actions style="justify-content: center">
+        <button color="warn" mat-button mat-dialog-close (click)="increase(tobeEdit)" >Yes</button>
+        <button mat-button mat-dialog-close>No</button>
+    </mat-dialog-actions>
+</ng-template>
+  
+
+<ng-template #decreaseValue>
+    <mat-dialog-content style="font-size: 16px">Are you sure?</mat-dialog-content>
+    <mat-dialog-actions style="justify-content: center">
+        <button color="warn" mat-button mat-dialog-close (click)="decrease(tobeEdit)" >Yes</button>
+        <button mat-button mat-dialog-close>No</button>
+    </mat-dialog-actions>
+</ng-template>
